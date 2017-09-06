@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.*;
 
 /**
  * Access users in the user table.
@@ -15,6 +16,8 @@ import java.util.List;
  * @author pwaite
  */
 public class UserData {
+
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
@@ -33,9 +36,9 @@ public class UserData {
             }
             database.disconnect();
         } catch (SQLException e) {
-            System.out.println("SearchUser.getAllUsers()...SQL Exception: " + e);
+            logger.error("SearchUser.getAllUsers()...SQL Exception: ", e);
         } catch (Exception e) {
-            System.out.println("SearchUser.getAllUsers()...Exception: " + e);
+            logger.error("SearchUser.getAllUsers()...Exception: ", e);
         }
         return users;
     }
@@ -60,9 +63,9 @@ public class UserData {
 
             database.disconnect();
         } catch (SQLException e) {
-            System.out.println("SearchUser.getAllUsers()...SQL Exception: " + e);
+            logger.error("SearchUser.getAllUsers()...SQL Exception: ", e);
         } catch (Exception e) {
-            System.out.println("SearchUser.getAllUsers()...Exception: " + e);
+            logger.error("SearchUser.getAllUsers()...Exception: ", e);
         }
 
         return searchUser;
